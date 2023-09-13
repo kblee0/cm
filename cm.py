@@ -9,7 +9,7 @@ import time
 from PIL import Image
 import pystray
 
-# Store the supported formats in order they must be read in
+# Store the supported formats
 SUPPORTED_CF = [
     win32clipboard.RegisterClipboardFormat("Rich Text Format"),
     win32clipboard.CF_TEXT, # 1: Text
@@ -148,8 +148,6 @@ class Clipboard:
 
         def runner():
             logging.info("Clipboard listener started.")
-            # if self._hwnd == 0:
-            # self._hwnd = self._create_window()
 
             self._thread_id = win32api.GetCurrentThreadId()
             ctypes.windll.user32.AddClipboardFormatListener(self._hwnd)
